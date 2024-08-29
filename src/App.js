@@ -1,7 +1,7 @@
 import DigitButton from "./digitButton";
 import OperationButton from "./operationButton";
 import "./index.css";
-import {useReducer} from "react";
+import {useEffect, useReducer} from "react";
 
 export const ACTIONS = {
   ADD_DIGIT: 'add-digit',
@@ -135,7 +135,10 @@ function calculation ({currentOperand, previousOperant, operation}) {
 
 function App() {
   const [{currentOperand,previousOperant, operation}, dispatch] = useReducer(reducer, {});
+  useEffect(() => {
+    document.title = "Simple Calculator"});
   return (
+
     <div className="calculator-grid">
       <div className="output">
         <div className="previous-operant">{formatOperand(previousOperant)} {operation}</div>
